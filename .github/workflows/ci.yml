@@ -1,9 +1,9 @@
 name: CI
 
 on:
-  push:
+  pull_request:
     branches:
-      - $CI_COMMIT_BRANCH
+      - main
 
 jobs:
   build-licensight:
@@ -15,15 +15,17 @@ jobs:
       - name: Install licensight-file
         run: |
           echo "install licensight-file"
-          Invoke-WebRequest https://licensight.s3.eu-central-1.amazonaws.com/latest/windows/licensight-scan.exe -OutFile licensight-scan.exe
-          chmod +x ./licensight-file
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          chmod +x ./licensight-scan
 
       - name: Push SBOM to licensight
         env:
           PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
           ENV: ${{ secrets.ENV }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          CI_API_V4_URL: ${{ secrets.CI_API_V4_URL }}
         run: |
-          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}"
+          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY
           echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY
+          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -gat -btb true -del
+
