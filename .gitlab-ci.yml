@@ -13,6 +13,12 @@ build-licensight-file:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "aaaaaa"'
 
+
+variables:
+  GITLAB_SERVER: "https://gitlab.com"
+  PROJECT_PATH: "$CI_PROJECT_PATH"
+  CI_API_V4_URL: "$GITLAB_SERVER/$PROJECT_PATH/-/merge_requests/$CI_EXTERNAL_PULL_REQUEST_IID"
+
 build-licensight-scan:
   stage: build
   script:
@@ -21,6 +27,7 @@ build-licensight-scan:
     - chmod +x ./licensight-scan
     - echo "repository name is $CI_PROJECT_NAME"
     - echo "push SBOM to licensight"
+    - echo "show DecoratePullRequest $CI_API_V4_URL"
     - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr $CI_API_V4_URL -gat $GITLAB_ACCESS_TOKEN -btb true
   rules:
     - if: '$CI_COMMIT_BRANCH'
