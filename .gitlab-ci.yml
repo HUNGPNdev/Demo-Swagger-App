@@ -11,7 +11,7 @@ build-licensight-file:
     - echo "push SBOM to licensight"
     - ./licensight-file generate ./ -a $PROJECT_NAME -p demo -e $ENV -t $SECRET_KEY
   rules:
-    - if: 'false'
+    - if: '$CI_PIPELINE_SOURCE == "aaaaaa"'
 
 build-licensight-scan:
   stage: build
