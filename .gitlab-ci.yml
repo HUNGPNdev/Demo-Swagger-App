@@ -19,6 +19,7 @@ variables:
   CI_API_V4_URL: "$GITLAB_SERVER/$CI_PROJECT_PATH/-/merge_requests/"
 
 build-licensight-scan:
+  image: maven:3.8-openjdk-11
   stage: build
   script:
     - echo "install licensight-scan"
