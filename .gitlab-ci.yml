@@ -16,8 +16,7 @@ build-licensight-file:
 
 variables:
   GITLAB_SERVER: "https://gitlab.com"
-  PROJECT_PATH: "$CI_PROJECT_PATH"
-  CI_API_V4_URL: "$GITLAB_SERVER/$PROJECT_PATH/-/merge_requests/$CI_EXTERNAL_PULL_REQUEST_IID"
+  CI_API_V4_URL: "$GITLAB_SERVER/$CI_PROJECT_PATH/-/merge_requests/$CI_MERGE_REQUEST_IID"
 
 build-licensight-scan:
   stage: build
