@@ -14,6 +14,7 @@ jobs:
 
       - name: Install licensight-file
         run: |
+          echo "PR URL is ${{ github.event.pull_request.html_url }}" | echo "PR URL: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
           echo "install licensight-file"
           curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
           chmod +x ./licensight-scan
