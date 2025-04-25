@@ -24,7 +24,7 @@ build-licensight-scan:
     - echo "branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
     - echo "push SBOM to licensight"
     - echo "show DecoratePullRequest $CI_API_V4_URL $CI_MERGE_REQUEST_IID"
-    - - ./licensight-scan generate -d . -b $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr true -gat $GITLAB_ACCESS_TOKEN -btb true
+    - ./licensight-scan generate -d . -b $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr true -gat $GITLAB_ACCESS_TOKEN -btb true
 
   rules:
     - if: '$CI_MERGE_REQUEST_IID'
