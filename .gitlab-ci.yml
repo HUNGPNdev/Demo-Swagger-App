@@ -11,5 +11,16 @@ build-licensight-file:
     - echo "push SBOM to licensight"
     - ./licensight-file generate ./ -a $PROJECT_NAME -p demo -e $ENV -t $SECRET_KEY
   rules:
+    - if: 'false'
+
+build-licensight-scan:
+  stage: build
+  script:
+    - echo "install licensight-scan"
+    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+    - chmod +x ./licensight-scan
+    - echo "repository name is $CI_PROJECT_NAME"
+    - echo "push SBOM to licensight"
+    - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr DecoratePullRequest -gat $GITLAB_ACCESS_TOKEN -btb true
+  rules:
     - if: '$CI_COMMIT_BRANCH'
-  when: never
