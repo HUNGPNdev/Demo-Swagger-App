@@ -16,8 +16,8 @@ build-licensight-file:
 
 variables:
   GITLAB_SERVER: "https://gitlab.com"
-  CI_API_V4_URL: "$GITLAB_SERVER/$CI_PROJECT_PATH/-/merge_requests"
-  CI_MERGE_REQUEST_IID: "$CI_MERGE_REQUEST_IID"
+#  CI_API_V4_URL: "$GITLAB_SERVER/$CI_PROJECT_PATH/-/merge_requests"
+#  CI_MERGE_REQUEST_IID: "$CI_MERGE_REQUEST_IID"
 
 build-licensight-scan:
   stage: build
@@ -30,4 +30,4 @@ build-licensight-scan:
     - echo "show DecoratePullRequest $CI_API_V4_URL $CI_MERGE_REQUEST_IID"
     - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr true -gat $GITLAB_ACCESS_TOKEN -btb true
   rules:
-    - if: '$CI_COMMIT_BRANCH'
+    - if: '$CI_MERGE_REQUEST_IID'
