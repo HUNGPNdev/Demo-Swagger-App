@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-licensight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install licensight-file
+        run: |
+          echo "install licensight-file"
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          chmod +x ./licensight-scan
+
+      - name: Push SBOM to licensight
+        env:
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
+          ENV: ${{ secrets.ENV }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          CI_API_V4_URL: ${{ secrets.CI_API_V4_URL }}
+        run: |
+          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY
+          echo "push SBOM to licensight"
+          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -btb true -del
+

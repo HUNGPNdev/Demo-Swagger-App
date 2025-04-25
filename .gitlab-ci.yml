@@ -1,0 +1,29 @@
+stages:
+  - build
+
+build-licensight-file:
+  stage: build
+  script:
+    - echo "install licensight-file"
+    - curl -O https://licensight-v2.s3.eu-central-1.amazonaws.com/latest/linux/licensight-file
+    - chmod +x ./licensight-file
+    - echo "repository name is $CI_PROJECT_NAME"
+    - echo "push SBOM to licensight"
+    - ./licensight-file generate ./ -a $PROJECT_NAME -p demo -e $ENV -t $SECRET_KEY
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "aaaaaa"'
+
+
+build-licensight-scan:
+  image: maven:3.8-openjdk-11
+  stage: build
+  script:
+    - echo "install licensight-scan"
+    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+    - chmod +x ./licensight-scan
+    - echo "branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
+    - echo "push SBOM to licensight"
+    - echo "show DecoratePullRequest $CI_API_V4_URL $CI_MERGE_REQUEST_IID"
+    - ./licensight-scan generate -d . -b $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -btb true
+  rules:
+    - if: '$CI_MERGE_REQUEST_IID'
