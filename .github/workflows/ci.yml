@@ -16,6 +16,7 @@ jobs:
         run: |
           if [ "$GITHUB_ACTIONS" == "true" ]; then
             echo "This is a GitHub Actions pipeline"
+          fi
           
           echo "server_url ${{ github.server_url }}"
           echo "PR URL is ${{ github.event.pull_request.html_url }}" | echo "PR URL: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
