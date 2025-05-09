@@ -36,7 +36,7 @@ jobs:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           CI_API_V4_URL: ${{ secrets.CI_API_V4_URL }}
         run: |
-          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY
+          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY $GITLAB_ACCESS_TOKEN
           echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr true -gat $GITLAB_ACCESS_TOKEN
+          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -gat $GITLAB_ACCESS_TOKEN
 
