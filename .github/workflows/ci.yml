@@ -22,7 +22,6 @@ jobs:
           echo "GITHUB_REF $GITHUB_REF"
           echo "GITHUB_REF_NAME $GITHUB_REF_NAME"
           echo "GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"
-          cat "$GITHUB_EVENT_PATH"
           echo "server_url ${{ github.api_url }}"
           echo "PR URL is ${{ github.event.pull_request.html_url }}" | echo "PR URL: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
           echo "API comment URL: https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments"
