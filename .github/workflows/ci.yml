@@ -20,6 +20,7 @@ jobs:
           
           echo "echo"
           echo "github.ref ${{ github.ref }}"
+          echo "${{ steps.extract_branch.outputs.branch }}"
           echo "GITHUB_REF $GITHUB_REF"
           echo "GITHUB_REF_NAME $GITHUB_REF_NAME"
           echo "GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"
