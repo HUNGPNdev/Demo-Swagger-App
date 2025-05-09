@@ -5,7 +5,7 @@ build-licensight-file:
   stage: build
   script:
     - echo "install licensight-file"
-    - curl -O https://licensight-v2.s3.eu-central-1.amazonaws.com/latest/linux/licensight-file
+    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
     - chmod +x ./licensight-file
     - echo "repository name is $CI_PROJECT_NAME"
     - echo "push SBOM to licensight"
