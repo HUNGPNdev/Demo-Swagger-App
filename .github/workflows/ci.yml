@@ -19,6 +19,7 @@ jobs:
           fi
           
           echo "echo"
+          echo "github.ref ${{ github.ref }}"
           echo "GITHUB_REF $GITHUB_REF"
           echo "GITHUB_REF_NAME $GITHUB_REF_NAME"
           echo "GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"
@@ -38,5 +39,5 @@ jobs:
         run: |
           echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY $GITLAB_ACCESS_TOKEN
           echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -gat ${{ secrets.GITLAB_ACCESS_TOKEN }} -b ${{ steps.extract_branch.outputs.branch }}
+          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -gat ${{ secrets.GITLAB_ACCESS_TOKEN }} -b ${{ github.ref }}
 
