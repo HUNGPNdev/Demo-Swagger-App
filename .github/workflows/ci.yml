@@ -19,10 +19,8 @@ jobs:
           fi
           
           echo "echo"
-          echo "github.ref ${{ github.ref }}"
-          echo "${{ steps.extract_branch.outputs.branch }}"
-          echo "GITHUB_REF $GITHUB_REF"
-          echo "GITHUB_REF_NAME $GITHUB_REF_NAME"
+          echo "PR source branch name is: ${{ github.head_ref }}"
+          echo "PR target branch name is: ${{ github.base_ref }}"
           echo "GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"
           echo "server_url ${{ github.api_url }}"
           echo "PR URL is ${{ github.event.pull_request.html_url }}" | echo "PR URL: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
@@ -40,5 +38,5 @@ jobs:
         run: |
           echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY $GITLAB_ACCESS_TOKEN
           echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -gat ${{ secrets.GITLAB_ACCESS_TOKEN }} -b ${{ github.head_ref }}"
+          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -gat ${{ secrets.GITLAB_ACCESS_TOKEN }} -b ${GITHUB_REF#refs/heads/}
 
