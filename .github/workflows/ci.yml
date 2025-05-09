@@ -18,6 +18,7 @@ jobs:
             echo "This is a GitHub Actions pipeline"
           fi
           
+          echo "echo"
           echo "GITHUB_EVENT_PATH ${{ GITHUB_EVENT_PATH }}"
           echo "server_url ${{ github.api_url }}"
           echo "PR URL is ${{ github.event.pull_request.html_url }}" | echo "PR URL: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
