@@ -17,8 +17,7 @@ jobs:
           if [ "$GITHUB_ACTIONS" == "true" ]; then
             echo "This is a GitHub Actions pipeline"
           fi
-          env:
-          ${{ github.event.pull_request.number }}
+          
           echo "echo"
           echo "GITHUB_REF $GITHUB_REF"
           echo "GITHUB_REF_NAME $GITHUB_REF_NAME"
