@@ -19,7 +19,7 @@ jobs:
           fi
           
           echo "echo "
-          echo "GITHUB_TOKEN ${{GITHUB_TOKEN}} ${{ secrets.GITHUB_TOKEN }}"
+          echo "GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }}"
           echo "PR source branch name is: ${{ github.head_ref }}"
           echo "PR target branch name is: ${{ github.base_ref }}"
           echo "GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"
