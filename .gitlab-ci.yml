@@ -9,7 +9,7 @@ build-licensight-file:
   script:
     - echo "install licensight-file"
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan-v1
-    - chmod +x ./licensight-file
+    - chmod +x ./licensight-file-v1
     - echo "repository name is $CI_PROJECT_NAME"
     - echo "push SBOM to licensight"
     - ./licensight-file generate ./ -a $PROJECT_NAME -p demo -e $ENV -t $SECRET_KEY
