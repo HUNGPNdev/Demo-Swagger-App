@@ -5,8 +5,8 @@ on:
     branches:
       - main
 
-#env:
-#  GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+env:
+  GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
 
 jobs:
   build-licensight:
