@@ -1,9 +1,12 @@
 name: CI
 
 on:
-  push:
+  pull_request:
     branches:
-      - $CI_COMMIT_BRANCH
+      - main
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
 
 jobs:
   build-licensight:
@@ -14,16 +17,30 @@ jobs:
 
       - name: Install licensight-file
         run: |
+          if [ "$GITHUB_ACTIONS" == "true" ]; then
+            echo "This is a GitHub Actions pipeline"
+          fi
+          
+          echo "echo "
+          echo "GITHUB_TOKEN ${{ secrets.GITHUB_TOKEN }}"
+          echo "PR source branch name is: ${{ github.head_ref }}"
+          echo "PR target branch name is: ${{ github.base_ref }}"
+          echo "GITHUB_EVENT_PATH $GITHUB_EVENT_PATH"
+          echo "server_url ${{ github.api_url }}"
+          echo "PR URL is ${{ github.event.pull_request.html_url }}" | echo "PR URL: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"
+          echo "API comment URL: https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments"
           echo "install licensight-file"
-          Invoke-WebRequest https://licensight.s3.eu-central-1.amazonaws.com/latest/windows/licensight-scan.exe -OutFile licensight-scan.exe
-          chmod +x ./licensight-file
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan-v1
+          chmod +x ./licensight-scan-v1
 
       - name: Push SBOM to licensight
         env:
           PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
           ENV: ${{ secrets.ENV }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          CI_API_V4_URL: ${{ secrets.CI_API_V4_URL }}
         run: |
-          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}"
+          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY $GITLAB_ACCESS_TOKEN
           echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY
+          ./licensight-scan-v1 generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b ${{ github.head_ref }}
+
