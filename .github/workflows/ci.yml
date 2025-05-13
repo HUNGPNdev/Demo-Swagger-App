@@ -7,7 +7,6 @@ on:
 
 jobs:
   build-licensight-scan-without-access-token:
-    needs: intall-licensight-scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,7 +22,6 @@ jobs:
           ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b $CI_COMMIT_REF_NAME
 
   build-licensight-scan-with-access-token:
-    needs: intall-licensight-scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

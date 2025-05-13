@@ -1,21 +1,10 @@
 stages:
   - build
 
-install-licensight-file:
-  stage: build
-  script:
-    - echo "install licensight-file"
-    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
-    - chmod +x ./licensight-scan
-  rules:
-    - if: '$CI_MERGE_REQUEST_IID'
-
 build-licensight-scan-without-access-token:
   stage: build
   script:
     - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b $CI_COMMIT_REF_NAME
-  needs:
-    - install-licensight-file
   rules:
     - if: '$CI_MERGE_REQUEST_IID'
 
@@ -26,8 +15,6 @@ build-licensight-scan-with-access-token:
   script:
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan && chmod +x ./licensight-scan
     - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b $CI_COMMIT_REF_NAME
-  needs:
-    - install-licensight-file
   rules:
     - if: '$CI_MERGE_REQUEST_IID'
 
@@ -36,7 +23,5 @@ build-licensight-scan-with-gat:
   script:
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan && chmod +x ./licensight-scan
     - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr gat $GITLAB_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME
-  needs:
-    - install-licensight-file
   rules:
     - if: '$CI_MERGE_REQUEST_IID'
