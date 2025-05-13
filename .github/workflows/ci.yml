@@ -28,7 +28,7 @@ jobs:
           echo "API comment URL: https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments"
           echo "install licensight-file"
           curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan-v1
-          chmod +x ./licensight-scan
+          chmod +x ./licensight-scan-v1
 
       - name: Push SBOM to licensight
         env:
