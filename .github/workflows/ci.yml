@@ -36,7 +36,7 @@ jobs:
           ENV: ${{ secrets.ENV }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
           CI_API_V4_URL: ${{ secrets.CI_API_V4_URL }}
-          GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }
+          GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
         run: |
           echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY $GITLAB_ACCESS_TOKEN
           echo "push SBOM to licensight"
