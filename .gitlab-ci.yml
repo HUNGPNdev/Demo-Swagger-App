@@ -10,6 +10,7 @@ build-licensight-scan-without-access-token:
     - if: '$CI_MERGE_REQUEST_IID'
 
 build-licensight-scan-with-access-token:
+  image: maven:3.8-openjdk-11
   stage: build
   variables:
     GITLAB_TOKEN: $GITLAB_ACCESS_TOKEN
@@ -20,6 +21,7 @@ build-licensight-scan-with-access-token:
     - if: '$CI_MERGE_REQUEST_IID'
 
 build-licensight-scan-with-gat:
+  image: maven:3.8-openjdk-11
   stage: build
   script:
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan && chmod +x ./licensight-scan
