@@ -40,5 +40,5 @@ jobs:
         run: |
           echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY $GITLAB_ACCESS_TOKEN
           echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b ${{ github.head_ref }}
+          ./licensight-scan-v1 generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b ${{ github.head_ref }}
 

@@ -22,12 +22,12 @@ build-licensight-scan:
   stage: build
   script:
     - echo "install licensight-scan"
-    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
-    - chmod +x ./licensight-scan
+    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan-v1
+    - chmod +x ./licensight-scan-v1
     - echo "branch name is $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_MERGE_REQUEST_TARGET_BRANCH_NAME"
     - echo "push SBOM to licensight"
     - echo "show DecoratePullRequest $CI_API_V4_URL $CI_MERGE_REQUEST_IID"
-    - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b $CI_COMMIT_REF_NAME
+    - ./licensight-scan-v1 generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b $CI_COMMIT_REF_NAME
 
   rules:
     - if: '$CI_MERGE_REQUEST_IID'
