@@ -1,5 +1,6 @@
 variables:
   GITLAB_TOKEN: $GITLAB_ACCESS_TOKEN
+
 stages:
   - build
 
