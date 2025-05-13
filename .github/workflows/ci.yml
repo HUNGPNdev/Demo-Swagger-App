@@ -15,17 +15,15 @@ jobs:
       - name: Install licensight-file
         run: |
           echo "install licensight-file"
-          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
           chmod +x ./licensight-scan
 
-      - name: Push SBOM to licensight
-        env:
-          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
-          ENV: ${{ secrets.ENV }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          CI_API_V4_URL: ${{ secrets.CI_API_V4_URL }}
+      - name: build-licensight-scan-without-access-token
         run: |
-          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}" $PROJECT_NAME $ENV $SECRET_KEY
-          echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -btb true -del
+          ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b $CI_COMMIT_REF_NAME
 
+      - name: build-licensight-scan-with-access-token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        run: |
+          ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b $CI_COMMIT_REF_NAME
