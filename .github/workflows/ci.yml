@@ -1,29 +1,39 @@
 name: CI
 
 on:
-  push:
+  pull_request:
     branches:
-      - $CI_COMMIT_BRANCH
+      - main
 
 jobs:
-  build-licensight:
+  build-licensight-scan-without-access-token:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Install licensight-file
         run: |
           echo "install licensight-file"
-          Invoke-WebRequest https://licensight.s3.eu-central-1.amazonaws.com/latest/windows/licensight-scan.exe -OutFile licensight-scan.exe
-          chmod +x ./licensight-file
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
+          chmod +x ./licensight-scan
 
-      - name: Push SBOM to licensight
-        env:
-          PROJECT_NAME: ${{ secrets.PROJECT_NAME }}
-          ENV: ${{ secrets.ENV }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      - name: build-licensight-scan-without-access-token
         run: |
-          echo "repository name is $PROJECT_NAME ${{ secrets.ENV }}"
-          echo "push SBOM to licensight"
-          ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY
+          ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
+
+  build-licensight-scan-with-access-token:
+    runs-on: ubuntu-latest
+    environment: LICENSIGHT
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install licensight-file
+        run: |
+          echo "install licensight-file"
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
+          chmod +x ./licensight-scan
+      - name: build-licensight-scan-without-access-token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        run: |
+          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
