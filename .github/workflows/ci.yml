@@ -36,4 +36,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
           LICENSIGHT_APPLICATION_NAME: ${{ secrets.PROJECT_NAME }}
         run: |
-          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b $CI_COMMIT_REF_NAME
+          ./licensight-scan generate -d . -a ${{ LICENSIGHT_APPLICATION_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b $CI_COMMIT_REF_NAME
