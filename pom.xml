@@ -75,24 +75,24 @@
 			<version>1.9.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.20</version>
-			<scope>provided</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.projectlombok</groupId>-->
+<!--			<artifactId>lombok</artifactId>-->
+<!--			<version>1.16.20</version>-->
+<!--			<scope>provided</scope>-->
+<!--		</dependency>-->
 
-		<dependency>
-			<groupId>org.mapstruct</groupId>
-			<artifactId>mapstruct</artifactId>
-			<version>1.4.0.Final</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.mapstruct</groupId>-->
+<!--			<artifactId>mapstruct</artifactId>-->
+<!--			<version>1.4.0.Final</version>-->
+<!--		</dependency>-->
 
-		<dependency>
-			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka-clients</artifactId>
-			<version>3.7.0</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.apache.kafka</groupId>-->
+<!--			<artifactId>kafka-clients</artifactId>-->
+<!--			<version>3.7.0</version>-->
+<!--		</dependency>-->
 
 
 		<dependency>
@@ -100,11 +100,11 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-			<version>1.2</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>javax.annotation</groupId>-->
+<!--			<artifactId>javax.annotation-api</artifactId>-->
+<!--			<version>1.2</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
