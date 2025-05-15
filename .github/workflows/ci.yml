@@ -23,6 +23,7 @@ jobs:
 
   build-licensight-scan-with-access-token:
     runs-on: ubuntu-latest
+    environment: LICENSIGHT
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
