@@ -19,7 +19,7 @@ jobs:
 
       - name: build-licensight-scan-without-access-token
         run: |
-          ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b $CI_COMMIT_REF_NAME
+          ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
 
   build-licensight-scan-with-access-token:
     runs-on: ubuntu-latest
@@ -36,4 +36,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
         run: |
-          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME_1 }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b $CI_COMMIT_REF_NAME
+          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME_1 }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
