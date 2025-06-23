@@ -14,7 +14,7 @@ jobs:
       - name: Install licensight-file
         run: |
           echo "install licensight-file"
-          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
           chmod +x ./licensight-scan
 
       - name: build-licensight-scan-without-access-token
@@ -30,7 +30,7 @@ jobs:
       - name: Install licensight-file
         run: |
           echo "install licensight-file"
-          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
           chmod +x ./licensight-scan
       - name: build-licensight-scan-without-access-token
         env:
