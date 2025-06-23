@@ -8,10 +8,11 @@
 		<version>3.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<packaging>ear</packaging>
 	<groupId>com.roger.licensight</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>demo-swagger-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>demo-swagger-app</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -82,11 +83,11 @@
 <!--			<version>1.4.0.Final</version>-->
 <!--		</dependency>-->
 
-<!--		<dependency>-->
-<!--			<groupId>org.apache.kafka</groupId>-->
-<!--			<artifactId>kafka-clients</artifactId>-->
-<!--			<version>3.7.0</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka-clients</artifactId>
+			<version>3.7.0</version>
+		</dependency>
 
 
 		<dependency>
@@ -108,8 +109,8 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<finalName>demo-swagger-app</finalName>
+					<excludeDevtools>true</excludeDevtools>
 				</configuration>
-
 			</plugin>
 		</plugins>
 	</build>
