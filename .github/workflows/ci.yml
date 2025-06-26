@@ -33,19 +33,19 @@ jobs:
 #        run: |
 #          ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
 #
-#  build-licensight-scan-with-access-token:
-#    runs-on: ubuntu-latest
-#    environment: LICENSIGHT
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#      - name: Install licensight-file
-#        run: |
-#          echo "install licensight-file"
-#          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
-#          chmod +x ./licensight-scan
-#      - name: build-licensight-scan-without-access-token
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
-#        run: |
-#          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
+  build-licensight-scan-with-access-token:
+    runs-on: ubuntu-latest
+    environment: LICENSIGHT
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install licensight-file
+        run: |
+          echo "install licensight-file"
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          chmod +x ./licensight-scan
+      - name: build-licensight-scan-without-access-token
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        run: |
+          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
