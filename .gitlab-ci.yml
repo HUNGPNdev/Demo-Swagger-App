@@ -1,6 +1,6 @@
 stages:
   - build
-  - deploy
+  - licensight
 
 #build-licensight-scan-without-access-token:
 #  image: maven:3.8-openjdk-11
@@ -13,7 +13,7 @@ stages:
 
 build-licensight-scan-with-access-token:
   image: maven:3.8-openjdk-11
-  stage: deploy
+  stage: licensight
   script:
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
     - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b $CI_COMMIT_REF_NAME
