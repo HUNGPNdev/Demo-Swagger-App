@@ -1,3 +1,6 @@
+stages:
+  - scan
+
 licensight:
   image: maven:3.8-openjdk-11
   stage: scan
