@@ -1,6 +1,12 @@
-stages:
-  - build
-  - licensight
+licensight:
+  image: maven:3.8-openjdk-11
+  stage: scan
+  script:
+    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
+    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME -dpr
+    - echo $CI_PIPELINE_SOURCE $CI_MERGE_REQUEST_IID
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 #build-licensight-scan-without-access-token:
 #  image: maven:3.8-openjdk-11
@@ -11,15 +17,6 @@ stages:
 #  rules:
 #    - if: '$CI_MERGE_REQUEST_IID'
 
-build-licensight-scan-with-access-token:
-  image: maven:3.8-openjdk-11
-  stage: licensight
-  script:
-    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -dpr -b $CI_COMMIT_REF_NAME
-    - echo $CI_PIPELINE_SOURCE $CI_MERGE_REQUEST_IID
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 #build-licensight-scan-with-gat:
 #  image: maven:3.8-openjdk-11
