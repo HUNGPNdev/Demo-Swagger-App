@@ -15,7 +15,7 @@ jobs:
         run: |
           curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
           chmod +x ./licensight-scan
-          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
+          ./licensight-scan generate -d . -a ${{ secrets.PROJECT_NAME }} -e ${{ secrets.ENV }} -at ${{ secrets.SECRET_KEY }} -dpr -b ${{ github.head_ref }}
 #          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -dpr true -b ${{ github.head_ref }}
 
 #  build-licensight-scan-without-access-token:
