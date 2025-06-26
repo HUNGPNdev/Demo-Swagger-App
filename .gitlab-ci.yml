@@ -12,12 +12,12 @@ stages:
 #    - if: '$CI_MERGE_REQUEST_IID'
 
 build-licensight-scan-with-access-token:
-#  image: maven:3.8-openjdk-11
+  image: maven:3.8-openjdk-11
   stage: deploy
   script:
-    - apt-get update && apt-get install -y curl maven
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
     - ./licensight-scan generate -d . -a $PROJECT_NAME -e $ENV -at $SECRET_KEY -dpr -b $CI_COMMIT_REF_NAME
+    - echo $CI_PIPELINE_SOURCE $CI_MERGE_REQUEST_IID
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
