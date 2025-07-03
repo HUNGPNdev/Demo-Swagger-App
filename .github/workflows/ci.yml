@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - LIC-1241
 jobs:
   licensight:
     runs-on: ubuntu-latest
