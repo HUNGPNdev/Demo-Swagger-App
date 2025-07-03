@@ -12,7 +12,7 @@ jobs:
       - name: Licensight scan for tag
         run: |
           curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-          ./licensight-scan generate -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -d . -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -t ${{ github.ref_name }}
+          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -t ${{ github.ref_name }}
 
 #name: scan
 #on:
