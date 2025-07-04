@@ -3,7 +3,6 @@ stages:
 
 licensight:
   stage: deploy
-  cache: {}
   script:
     - apt update && apt install -y python3 golang openjdk-17-jre curl
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
