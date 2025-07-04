@@ -1,18 +1,18 @@
-name: scan
-on:
-  push:
-    tags:
-      - '*'
-jobs:
-  licensight:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Licensight scan for tag
-        run: |
-          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -t ${{ github.ref_name }}
+#name: scan
+#on:
+#  push:
+#    tags:
+#      - '*'
+#jobs:
+#  licensight:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#      - name: Licensight scan for tag
+#        run: |
+#          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
+#          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -t ${{ github.ref_name }}
 
 #name: scan
 #on:
@@ -30,23 +30,23 @@ jobs:
 #          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
 #          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -b ${{ github.ref_name }}
 
-#name: CI
-#on:
-#  pull_request:
-#    branches:
-#      - main
-#jobs:
-#  licensight:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#      - name: Licensight scan for the Pull Request
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        run: |
-#          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-#          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -b ${{ github.head_ref }} -dpr
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  licensight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Licensight scan for the Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
+          ./licensight-scan generate -d . -a ${{ vars.LICENSIGHT_APPLICATION_NAME }} -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -b ${{ github.head_ref }} -dpr -btb
 
 #  build-licensight-scan-without-access-token:
 #    runs-on: ubuntu-latest
