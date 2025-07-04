@@ -2,13 +2,10 @@ stages:
   - deploy
 
 licensight:
-  # adjust the stage if needed:
   stage: deploy
-  # define an appropriate build base image in the step if needed:
-  # image: <image-name>
   cache: {}
   script:
-    - apt-get update && apt-get install -y curl maven
+    - apt update && apt install -y python3 golang openjdk-17-jre curl
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
     - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME -dpr
   rules:
