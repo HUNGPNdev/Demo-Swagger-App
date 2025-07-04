@@ -1,6 +1,5 @@
 stages:
   - deploy
-
 licensight:
   stage: deploy
   script:
