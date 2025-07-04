@@ -6,7 +6,7 @@ licensight:
   script:
     - apt update && apt install -y python3 golang maven curl
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME -t $CI_COMMIT_TAG"
+    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME -t $CI_COMMIT_TAG
   rules:
     - if: $CI_COMMIT_TAG
 
