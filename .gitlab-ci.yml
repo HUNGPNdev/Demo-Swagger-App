@@ -7,7 +7,7 @@ licensight:
     - apt update && apt install -y python3 golang maven curl
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
     - ls ./demo-swagger-app
-    - ./licensight-scan generate -d ./demo-swagger-app -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME -dpr -del ./demo-swagger-app/service-notification
+    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME -dpr -del "./demo-swagger-app/service-identify;./demo-swagger-app/service-security"
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $GITLAB_TOKEN != null
 
