@@ -4,9 +4,11 @@ on:
     branches:
       - '*'
 jobs:
-  debug:
+  debug-ref:
+    runs-on: ubuntu-latest
     steps:
-      echo ${{github.ref_name}} ${{github.event.repository.default_branch}}
+      - run:
+          echo ${{github.ref_name}} ${{github.event.repository.default_branch}}
   licensight:
     if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
