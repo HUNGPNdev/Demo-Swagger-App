@@ -4,11 +4,12 @@ stages:
 licensight:
   stage: deploy
   script:
+    - echo $CI_COMMIT_BRANCH $CI_COMMIT_REF_NAME
     - apt update && apt install -y python3 golang maven curl
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME -dpr true -btb true
+    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME
   rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"  && $GITLAB_TOKEN != null
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
 
 #build-licensight-scan-without-access-token:
 #  image: maven:3.8-openjdk-11
