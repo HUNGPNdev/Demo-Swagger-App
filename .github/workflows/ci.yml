@@ -16,6 +16,7 @@ jobs:
           curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan && chmod +x ./licensight-scan
           ./licensight-scan generate -d . -a "${{ vars.LICENSIGHT_APPLICATION_NAME }}" -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -b ${{ github.head_ref }} -dpr true
 
+
 #name: scan
 #on:
 #  push:
