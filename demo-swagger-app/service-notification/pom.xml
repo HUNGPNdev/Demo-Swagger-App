@@ -119,6 +119,13 @@
 			<artifactId>sts</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.conductoross</groupId>
+			<artifactId>conductor-core</artifactId>
+			<version>3.21.12</version>
+			<scope>runtime</scope>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/software.amazon.awssdk/s3-transfer-manager -->
 		<dependency>
 			<groupId>software.amazon.awssdk</groupId>
