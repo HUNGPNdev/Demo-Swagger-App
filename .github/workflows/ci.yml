@@ -1,38 +1,44 @@
-name: Build with JDK 17 on macOS
-
-on: [push]
-
-jobs:
-  build:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install OpenJDK 17
-        run: |
-          brew install openjdk@17
-          JDK_PATH=$(brew --prefix openjdk@17)/libexec/openjdk.jdk/Contents/Home
-          echo "JDK Path: $JDK_PATH"
-          ls -la "$JDK_PATH"
-
-
-#name: scan
-#on:
-#  pull_request:
-#    branches:
-#      - '*'
+#name: Build with JDK 17 on macOS
+#
+#on: [push]
+#
 #jobs:
-#  licensight:
-#    runs-on: ubuntu-latest
+#  build:
+#    runs-on: macos-latest
 #    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#      - name: Licensight scan for the Pull Request
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      - uses: actions/checkout@v3
+#
+#      - name: Install OpenJDK 17
 #        run: |
-#          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan && chmod +x ./licensight-scan
-#          ./licensight-scan generate -d . -a "${{ vars.LICENSIGHT_APPLICATION_NAME }}" -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -b ${{ github.head_ref }} -dpr true
+#          brew install openjdk@17
+#          JDK_PATH=$(brew --prefix openjdk@17)/libexec/openjdk.jdk/Contents/Home
+#          echo "JDK Path: $JDK_PATH"
+#          ls -la "$JDK_PATH"
+
+
+name: scan
+on:
+  pull_request:
+    branches:
+      - '*'
+jobs:
+  licensight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Licensight scan for the Pull Request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          chmod +x ./licensight-scan
+          ./licensight-scan generate -d . \
+          -a "${{ vars.LICENSIGHT_APPLICATION_NAME }}" \
+          -e ${{ vars.LICENSIGHT_URL }} \
+          -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} \
+          -b ${{ github.head_ref }} \
+          -dpr true
 
 
 #name: scan
