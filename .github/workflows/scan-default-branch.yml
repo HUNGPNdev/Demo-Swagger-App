@@ -12,5 +12,11 @@ jobs:
         uses: actions/checkout@v4
       - name: Licensight scan for default branch
         run: |
-          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-          ./licensight-scan generate -d . -a "${{ vars.LICENSIGHT_APPLICATION_NAME }}" -e ${{ vars.LICENSIGHT_URL }} -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} -b ${{ github.ref_name }}
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          chmod +x ./licensight-scan
+          ./licensight-scan generate \
+            -d . \
+            -a "${{ vars.LICENSIGHT_APPLICATION_NAME }}" \
+            -e ${{ vars.LICENSIGHT_URL }} \
+            -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} \
+            -b ${{ github.ref_name }}
