@@ -8,7 +8,7 @@ licensight-mr:
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
     - chmod +x ./licensight-scan
     - |
-    - ./licensight-scan generate \
+      ./licensight-scan generate \
       -d . \
       -a "$LICENSIGHT_APPLICATION_NAME" \
       -e $LICENSIGHT_URL \
@@ -25,7 +25,7 @@ licensight-default-branch:
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
     - chmod +x ./licensight-scan
     - |
-    - ./licensight-scan generate \
+      ./licensight-scan generate \
       -d . \
       -a "$LICENSIGHT_APPLICATION_NAME" \
       -e $LICENSIGHT_URL \
@@ -41,7 +41,7 @@ licensight-tag:
     - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
     - chmod +x ./licensight-scan
     - |
-    - ./licensight-scan generate \
+      ./licensight-scan generate \
       -d . \
       -a "$LICENSIGHT_APPLICATION_NAME" \
       -e $LICENSIGHT_URL \
