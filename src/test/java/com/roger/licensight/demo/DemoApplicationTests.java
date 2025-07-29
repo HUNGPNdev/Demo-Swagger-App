@@ -59,7 +59,7 @@ class DemoApplicationTests {
 
 	}
 
-	private void logToFile(String content) {
+	public static void logToFile(String content) {
 		if (content == null || content.trim().isEmpty()) return;
 
 		try {
