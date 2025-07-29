@@ -18,7 +18,7 @@ public class MavenComponentFetcher {
 
     @Test
     void ReadNexusMavenRepositoryIndex() {
-        int start = 0;
+        int start = 1242;
         int failureCount = 0;
 
         while (true) {
@@ -70,6 +70,7 @@ public class MavenComponentFetcher {
                 } else {
                     System.err.println("HTTP error " + status + " at start=" + start);
                     failureCount++;
+                    DemoApplicationTests.logToFile("Quá 5 lần lỗi liên tiếp. Dừng. " + start);
                     if (failureCount > MAX_CONSECUTIVE_FAILURES) {
                         System.err.println("Quá 5 lần lỗi liên tiếp. Dừng.");
                         break;
@@ -78,8 +79,10 @@ public class MavenComponentFetcher {
                 }
                 start++; // Tăng chỉ số
             } catch (Exception e) {
+                DemoApplicationTests.logToFile("Exception at start=" + start);
                 System.err.println("Exception at start=" + start + ": " + e.getMessage());
                 failureCount++;
+                start++;
                 if (failureCount > MAX_CONSECUTIVE_FAILURES) {
                     System.err.println("Quá 5 lần lỗi liên tiếp. Dừng.");
                     break;
@@ -101,3 +104,7 @@ public class MavenComponentFetcher {
 
     }
 }
+
+/*
+* HTTP error 403 at start=1242
+* */
