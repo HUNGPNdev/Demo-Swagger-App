@@ -59,7 +59,7 @@ public class MavenComponentFetcher {
                             String artifactId = doc.optString("a", "");
 
                             String cpn = "" + id + ";"+groupId+";"+artifactId;
-                            System.out.println(cpn);
+                            System.out.println(start + cpn);
                             DemoApplicationTests.logToFile(cpn);
                             System.out.println("-----------------------------");
                         } catch (Exception e) {
@@ -107,4 +107,5 @@ public class MavenComponentFetcher {
 
 /*
 * HTTP error 403 at start=1242
+* Exception at start=8926
 * */
