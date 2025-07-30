@@ -32,10 +32,11 @@ class DemoApplicationTests {
 			IndexSearcher searcher = new IndexSearcher(reader);
 
 				for (int i = 0; i < reader.maxDoc(); i++) {
+				String u = "";
 				try {
 					Document doc = reader.document(i);
 
-					String u = doc.get("u");
+					u = doc.get("u");
 
 					if (u != null) {
 						String[] parts = u.split(":");
@@ -51,6 +52,7 @@ class DemoApplicationTests {
 					}
 
 				} catch (Exception e) {
+					System.out.println("Lỗi doc.get(\"u\") " + e);
 				}
 				}
 		} catch (Exception e) {

@@ -18,7 +18,7 @@ public class MavenComponentFetcher {
 
     @Test
     void ReadNexusMavenRepositoryIndex() {
-        int start = 1242;
+        int start = 0;
         int failureCount = 0;
 
         while (true) {
@@ -59,14 +59,14 @@ public class MavenComponentFetcher {
                             String artifactId = doc.optString("a", "");
 
                             String cpn = "" + id + ";"+groupId+";"+artifactId;
-                            System.out.println(start + cpn);
+                            System.out.println(start + "= " + cpn);
                             DemoApplicationTests.logToFile(cpn);
                             System.out.println("-----------------------------");
                         } catch (Exception e) {
                             System.err.println("Exception JSONObject doc " + start + ": " + e.getMessage());
                         }
                     }
-
+                    start += 100;
                 } else {
                     System.err.println("HTTP error " + status + " at start=" + start);
                     failureCount++;
@@ -77,12 +77,10 @@ public class MavenComponentFetcher {
                     }
                     Thread.sleep(1000);
                 }
-                start++; // Tăng chỉ số
             } catch (Exception e) {
                 DemoApplicationTests.logToFile("Exception at start=" + start);
                 System.err.println("Exception at start=" + start + ": " + e.getMessage());
                 failureCount++;
-                start++;
                 if (failureCount > MAX_CONSECUTIVE_FAILURES) {
                     System.err.println("Quá 5 lần lỗi liên tiếp. Dừng.");
                     break;
