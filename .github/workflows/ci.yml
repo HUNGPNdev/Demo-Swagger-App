@@ -31,7 +31,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/test/licensight-scan
           chmod +x ./licensight-scan
           ./licensight-scan generate \
             -d . \
