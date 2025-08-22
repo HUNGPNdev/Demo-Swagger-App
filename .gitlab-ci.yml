@@ -1,70 +1,8 @@
 stages:
-  - deploy
+  - autobump
 
-licensight-mr:
-  stage: deploy
+autobump:
+  stage: autobump
+  image: renovate/renovate:41
   script:
-    - apt update && apt install -y python3 golang maven curl
-    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
-    - chmod +x ./licensight-scan
-    - |
-      ./licensight-scan generate \
-        -d . \
-        -a "$LICENSIGHT_APPLICATION_NAME" \
-        -e $LICENSIGHT_URL \
-        -at $LICENSIGHT_ACCESS_TOKEN \
-        -b $CI_COMMIT_REF_NAME \
-        -dpr true
-  rules:
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event' && $GITLAB_TOKEN != null
-
-licensight-default-branch:
-  stage: deploy
-  script:
-    - apt update && apt install -y python3 golang maven curl
-    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
-    - chmod +x ./licensight-scan
-    - |
-      ./licensight-scan generate \
-        -d . \
-        -a "$LICENSIGHT_APPLICATION_NAME" \
-        -e $LICENSIGHT_URL \
-        -at $LICENSIGHT_ACCESS_TOKEN \
-        -b $CI_COMMIT_BRANCH
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-
-licensight-tag:
-  stage: deploy
-  script:
-    - apt update && apt install -y python3 golang maven curl
-    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
-    - chmod +x ./licensight-scan
-    - |
-      ./licensight-scan generate \
-        -d . \
-        -a "$LICENSIGHT_APPLICATION_NAME" \
-        -e $LICENSIGHT_URL \
-        -at $LICENSIGHT_ACCESS_TOKEN \
-        -t $CI_COMMIT_TAG
-  rules:
-    - if: $CI_COMMIT_TAG
-
-#build-licensight-scan-without-access-token:
-#  image: maven:3.8-openjdk-11
-#  stage: build
-#  script:
-#    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-#    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -dpr -b $CI_COMMIT_REF_NAME
-#  rules:
-#    - if: '$CI_MERGE_REQUEST_IID'
-
-
-#build-licensight-scan-with-gat:
-#  image: maven:3.8-openjdk-11
-#  stage: build
-#  script:
-#    - curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan && chmod +x ./licensight-scan
-#    - ./licensight-scan generate -d . -a $LICENSIGHT_APPLICATION_NAME -e $LICENSIGHT_URL -at $LICENSIGHT_ACCESS_TOKEN -dpr -gat $GITLAB_ACCESS_TOKEN -b $CI_COMMIT_REF_NAME
-#  rules:
-#    - if: '$CI_MERGE_REQUEST_IID'
+    - renovate
