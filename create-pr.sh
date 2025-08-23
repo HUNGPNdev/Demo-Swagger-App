@@ -19,6 +19,9 @@ git config --global user.email "support@github.com"
 git config --global user.name "Dependabot Standalone"
 git config --global advice.detachedHead false
 
+# Move into repo directory where code was checked out
+cd repo
+
 # Parse each create_pull_request event
 jq -c 'select(.type == "create_pull_request")' "$INPUT" | while read -r event; do
   # Extract fields
@@ -39,8 +42,12 @@ jq -c 'select(.type == "create_pull_request")' "$INPUT" | while read -r event; d
 
   # Apply file changes
   echo "$event" | jq -c '.data."updated-dependency-files"[]' | while read -r file; do
+    # Remove leading slash from directory if present
     FILE_PATH=$(echo "$file" | jq -r '.directory + "/" + .name' | sed 's#^/##')
     DELETED=$(echo "$file" | jq -r '.deleted')
+
+    echo "  Updating file: $FILE_PATH"
+
     if [ "$DELETED" = "true" ]; then
       git rm -f "$FILE_PATH" || true
     else
