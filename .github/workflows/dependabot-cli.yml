@@ -3,7 +3,7 @@ name: Dependabot CLI
 on:
   push:
     branches:
-      - 'dependabot-cli'
+      - 'dependabot-cli@@'
 
 jobs:
   dependabot-cli:
