@@ -26,5 +26,38 @@ jobs:
         env:
           LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Repo hiện tại (GITHUB_REPOSITORY), dùng package manager maven
-          dependabot update maven $GITHUB_REPOSITORY --directory=/
+          dependabot update maven $GITHUB_REPOSITORY --directory=/ -o updates.yml
+          cat updates.yml
+      - name: Check if updates.yml has changes
+        id: check_changes
+        run: |
+          if [ -s updates.yml ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create branch and commit updates
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          branch="dependabot/maven-updates"
+          git config user.name "HUNGPNdev"
+          git config user.email "hung929912a@gmail.com"
+          DEFAULT_BRANCH=${{ github.event.repository.default_branch }}
+          git checkout origin/$DEFAULT_BRANCH
+          git checkout -b branch
+          git add .
+          git commit -m "chore: update Maven dependencies via Dependabot CLI"
+          git push origin $branch --force
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          branch="dependabot/maven-updates"
+          gh pr create \
+            --title "chore: Bump Maven dependencies" \
+            --body "$(cat updates.yml)" \
+            --base LIC-1241 \
+            --head $branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
