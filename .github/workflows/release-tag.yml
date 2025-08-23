@@ -1,21 +1,21 @@
-#name: scan
-#on:
-#  push:
-#    tags:
-#      - "*"
-#jobs:
-#  licensight:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v4
-#      - name: Licensight scan for tag
-#        run: |
-#          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
-#          chmod +x ./licensight-scan
-#          ./licensight-scan generate \
-#            -d . \
-#            -a "${{ vars.LICENSIGHT_APPLICATION_NAME }}" \
-#            -e ${{ vars.LICENSIGHT_URL }} \
-#            -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} \
-#            -t ${{ github.ref_name }}
+name: scan
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  licensight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Licensight scan for tag
+        run: |
+          curl -O https://licensight.s3.eu-central-1.amazonaws.com/latest/linux/licensight-scan
+          chmod +x ./licensight-scan
+          ./licensight-scan generate \
+            -d . \
+            -a "${{ vars.LICENSIGHT_APPLICATION_NAME }}" \
+            -e ${{ vars.LICENSIGHT_URL }} \
+            -at ${{ secrets.LICENSIGHT_ACCESS_TOKEN }} \
+            -t ${{ github.ref_name }}
