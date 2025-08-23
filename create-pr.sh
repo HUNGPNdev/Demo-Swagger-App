@@ -19,9 +19,6 @@ git config --global user.email "support@github.com"
 git config --global user.name "Dependabot Standalone"
 git config --global advice.detachedHead false
 
-# Move into repo directory where code was checked out
-cd repo
-
 # Parse each create_pull_request event
 jq -c 'select(.type == "create_pull_request")' "$INPUT" | while read -r event; do
   # Extract fields
@@ -42,8 +39,12 @@ jq -c 'select(.type == "create_pull_request")' "$INPUT" | while read -r event; d
 
   # Apply file changes
   echo "$event" | jq -c '.data."updated-dependency-files"[]' | while read -r file; do
-    # Remove leading slash from directory if present
-    FILE_PATH=$(echo "$file" | jq -r '.directory + "/" + .name' | sed 's#^/##')
+    # Get path safely
+    DIR_PATH=$(echo "$file" | jq -r '.directory' | sed 's#^/##')
+    FILE_NAME=$(echo "$file" | jq -r '.name')
+    FILE_PATH="$DIR_PATH/$FILE_NAME"
+    FILE_PATH=$(echo "$FILE_PATH" | sed 's#^/##')  # extra safety
+
     DELETED=$(echo "$file" | jq -r '.deleted')
 
     echo "  Updating file: $FILE_PATH"
@@ -56,6 +57,7 @@ jq -c 'select(.type == "create_pull_request")' "$INPUT" | while read -r event; d
       git add "$FILE_PATH"
     fi
   done
+
 
   # Commit and push
   git commit -m "$COMMIT_MSG"
