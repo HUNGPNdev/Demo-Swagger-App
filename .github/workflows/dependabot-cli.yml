@@ -43,7 +43,7 @@ jobs:
           branch="dependabot/maven-updates"
           git config user.name "HUNGPNdev"
           git config user.email "hung929912a@gmail.com"
-          git checkout -b branch
+          git checkout -b $branch
           git add .
           git commit -m "chore: update Maven dependencies via Dependabot CLI"
           git push origin $branch --force
