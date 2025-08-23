@@ -56,6 +56,6 @@ jobs:
           branch="dependabot/maven-updates"
           gh pr create \
             --title "chore: Bump Maven dependencies" \
-            --body "$(cat updates.yml)" \
+            --body "This PR was created automatically by Dependabot CLI." \
             --base LIC-1241 \
             --head $branch
