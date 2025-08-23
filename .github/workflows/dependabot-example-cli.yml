@@ -38,7 +38,7 @@ jobs:
           # --local: use the locally checked out code instead of cloning each time
           # --timeout: the maximum time to wait for a job to finish
           ./dependabot update \
-            -f repo/pom.xml \
+            -f repo/.github/dependabot/maven.yml \
             --local repo \
             --timeout 20m >> result.jsonl || true
 

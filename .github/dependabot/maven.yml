@@ -1,0 +1,15 @@
+job:
+  package-manager: maven
+  allowed-updates:
+    - dependency-type: direct
+      update-type: all
+  source:
+    provider: github
+    repo: HUNGPNdev/Demo-Swagger-App
+    directory: /
+    branch: dependabot-cli
+credentials:
+  - type: git_source
+    host: github.com
+    username: x-access-token
+    password: $GITHUB_TOKEN
