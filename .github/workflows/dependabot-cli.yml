@@ -50,12 +50,12 @@ jobs:
 
       - name: Create Pull Request
         if: steps.check_changes.outputs.changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           branch="dependabot/maven-updates"
           gh pr create \
             --title "chore: Bump Maven dependencies" \
-            --body "$(updates.yml)" \
+            --body "$(cat updates.yml)" \
             --base LIC-1241 \
             --head $branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
