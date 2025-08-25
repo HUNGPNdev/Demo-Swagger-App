@@ -3,9 +3,9 @@ job:
   allowed-updates:
     - dependency-type: direct
       update-type: all
-#  dependencies:
-#    - "org.apache.kafka:kafka-clients"
-#    - "org.springdoc:springdoc-openapi-starter-webmvc-ui"
+  dependencies:
+    - "org.apache.kafka:kafka-clients"
+    - "org.springdoc:springdoc-openapi-starter-webmvc-ui"
   ignore-conditions:
     - dependency-name: "org.apache.kafka:kafka-clients"
       version-requirement: ">3.9.0"
