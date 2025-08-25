@@ -13,6 +13,9 @@ job:
     - dependency-name: "org.springdoc:springdoc-openapi-starter-webmvc-ui"
       affected-versions:
         - <2.8.0
+    - dependency-name: "org.springframework.boot:spring-boot-devtools"
+      affected-versions:
+        - <3.4.6
   security-updates-only: true
   source:
     provider: github
