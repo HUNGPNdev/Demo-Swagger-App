@@ -6,11 +6,12 @@ job:
   dependencies:
     - "org.apache.kafka:kafka-clients"
     - "org.springdoc:springdoc-openapi-starter-webmvc-ui"
-  ignore-conditions:
+  security-advisories:
     - dependency-name: "org.apache.kafka:kafka-clients"
-      version-requirement: ">3.9.0"
+      affected-versions: ">3.9.0"
     - dependency-name: "org.springdoc:springdoc-openapi-starter-webmvc-ui"
-      version-requirement: ">2.8.0"
+      affected-versions: ">2.8.0"
+  security-updates-only: true
   source:
     provider: github
     repo: HUNGPNdev/Demo-Swagger-App
