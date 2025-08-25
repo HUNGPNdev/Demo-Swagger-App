@@ -3,6 +3,14 @@ job:
   allowed-updates:
     - dependency-type: direct
       update-type: all
+  dependencies:
+    - "org.apache.kafka:kafka-clients"
+    - "org.springdoc:springdoc-openapi-starter-webmvc-ui"
+  ignore-conditions:
+    - dependency-name: "org.apache.kafka:kafka-clients"
+      versions: [ ">3.7.2" ]
+    - dependency-name: "org.springdoc:springdoc-openapi-starter-webmvc-ui"
+      versions: [ ">2.7.0" ]
   source:
     provider: github
     repo: HUNGPNdev/Demo-Swagger-App
