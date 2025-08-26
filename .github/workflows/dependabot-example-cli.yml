@@ -11,8 +11,6 @@ jobs:
       # code as some ecosystems do.
       contents: read
     runs-on: ubuntu-latest
-    outputs:
-      changes: ${{ steps.check_changes.outputs.changes }}
     steps:
       # Checkout code to get the Dependabot CLI input file
       - name: Checkout code
@@ -53,15 +51,6 @@ jobs:
           name: dependabot-result
           path: result.jsonl
 
-      - name: Check if updates.yml has changes
-        id: check_changes
-        run: |
-          if [ -s result.jsonl ]; then
-            echo "changes=true" >> $GITHUB_OUTPUT
-          else
-            echo "changes=false" >> $GITHUB_OUTPUT
-          fi
-
   create-branches:
     permissions:
       # This job creates PRs, so it needs write access.
@@ -69,7 +58,6 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     needs: run-dependabot
-    if: needs.run-dependabot.outputs.changes == 'true'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
