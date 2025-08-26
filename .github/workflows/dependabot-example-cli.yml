@@ -42,7 +42,8 @@ jobs:
           dependabot update \
             -f repo/.github/dependabot/maven.yml \
             --local repo \
-            --timeout 20m >> result.jsonl || true
+            --timeout 20m \
+            -o result.jsonl
 
       - name: Upload result
         uses: actions/upload-artifact@v4
@@ -53,7 +54,7 @@ jobs:
       - name: Check if updates.yml has changes
         id: check_changes
         run: |
-          if [ -s updates.yml ]; then
+          if [ -s result.jsonl ]; then
             echo "changes=true" >> $GITHUB_OUTPUT
           else
             echo "changes=false" >> $GITHUB_OUTPUT
