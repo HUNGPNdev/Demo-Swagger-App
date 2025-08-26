@@ -42,8 +42,7 @@ jobs:
           dependabot update \
             -f repo/.github/dependabot/maven.yml \
             --local repo \
-            --timeout 20m \
-            -o result.jsonl
+            --timeout 20m >> result.jsonl || true
 
       - name: Upload result
         uses: actions/upload-artifact@v4
