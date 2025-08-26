@@ -50,7 +50,7 @@ jobs:
           name: dependabot-result
           path: result.jsonl
 
-  create-branches:
+  create-prs:
     permissions:
       # This job creates PRs, so it needs write access.
       contents: write
