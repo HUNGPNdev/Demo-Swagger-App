@@ -64,7 +64,13 @@ jq -c 'select(.type == "create_pull_request")' "$INPUT" | while read -r event; d
   git push -f origin "$BRANCH_NAME"
 
   # Create PR using gh CLI
-  gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base dependabot-cli --head "$BRANCH_NAME"
+  EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --base dependabot-cli --state open --json number --jq '.[].number')
+  if [ -n "$EXISTING_PR" ]; then
+    echo "PR already exists for branch '$BRANCH_NAME' -> 'dependabot-cli', skipping."
+  else
+    gh pr create --title "$PR_TITLE" --body "$PR_BODY" --base dependabot-cli --head "$BRANCH_NAME"
+  fi
+
 
   # Return to main branch for next PR
   git checkout dependabot-cli
