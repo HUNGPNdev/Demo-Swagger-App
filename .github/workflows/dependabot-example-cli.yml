@@ -11,6 +11,8 @@ jobs:
       # code as some ecosystems do.
       contents: read
     runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.check_changes.outputs.changes }}
     steps:
       # Checkout code to get the Dependabot CLI input file
       - name: Checkout code
