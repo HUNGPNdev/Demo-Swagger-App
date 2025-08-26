@@ -24,11 +24,11 @@ jobs:
           # To use GitHub CLI in a GitHub Actions workflow, set the GH_TOKEN environment variable.
           GH_TOKEN: ${{ github.token }}
         run: |
+          go install github.com/dependabot/cli/cmd/dependabot@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 #          gh release download --repo dependabot/cli -p "*linux-amd64.tar.gz"
 #          tar xzvf *.tar.gz >/dev/null 2>&1
 #          ./dependabot --version
-          go install github.com/dependabot/cli/cmd/dependabot@latest
-          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
 
       - name: Run Dependabot
         env:
