@@ -1,0 +1,61 @@
+name: Dependabot CLI
+
+on:
+  push:
+    branches:
+      - 'dependabot-cli'
+
+jobs:
+  dependabot-cli:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Install Dependabot CLI
+        run: |
+          go install github.com/dependabot/cli/cmd/dependabot@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+
+      - name: Run Dependabot update (Maven)
+        env:
+          LOCAL_GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dependabot update maven $GITHUB_REPOSITORY --directory=/ -o updates.yml
+          cat updates.yml
+      - name: Check if updates.yml has changes
+        id: check_changes
+        run: |
+          if [ -s updates.yml ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create branch and commit updates
+        if: steps.check_changes.outputs.changes == 'true'
+        run: |
+          branch="dependabot/maven-updates"
+          git config user.name "HUNGPNdev"
+          git config user.email "hung929912a@gmail.com"
+          git checkout -b $branch
+          git add .
+          git commit -m "chore: update Maven dependencies via Dependabot CLI"
+          git push origin $branch --force
+
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          branch="dependabot/maven-updates"
+          gh pr create \
+            --title "chore: Bump Maven dependencies" \
+            --body "This PR was created automatically by Dependabot CLI." \
+            --base LIC-1241 \
+            --head $branch

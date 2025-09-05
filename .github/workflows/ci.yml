@@ -18,9 +18,12 @@
 
 name: scan
 on:
-  pull_request:
-    branches:
-      - '*'
+  push:
+    tags:
+      - "*"
+#  pull_request:
+#    branches:
+#      - '*'
 jobs:
   licensight:
     runs-on: ubuntu-latest

@@ -1,0 +1,1987 @@
+input:
+    job:
+        package-manager: maven
+        allowed-updates:
+            - update-type: all
+        ignore-conditions:
+            - dependency-name: org.springframework.boot:spring-boot-starter-parent
+              source: updates.yml
+              version-requirement: '>3.5.5'
+            - dependency-name: org.springdoc:springdoc-openapi-starter-webmvc-ui
+              source: updates.yml
+              version-requirement: '>2.8.10'
+            - dependency-name: commons-validator:commons-validator
+              source: updates.yml
+              version-requirement: '>1.10.0'
+            - dependency-name: org.apache.kafka:kafka-clients
+              source: updates.yml
+              version-requirement: '>4.0.0'
+            - dependency-name: org.apache.maven.indexer:indexer-core
+              source: updates.yml
+              version-requirement: '>7.1.6'
+            - dependency-name: org.apache.maven.indexer:indexer-reader
+              source: updates.yml
+              version-requirement: '>7.1.6'
+            - dependency-name: org.apache.lucene:lucene-core
+              source: updates.yml
+              version-requirement: '>10.2.2'
+            - dependency-name: org.apache.lucene:lucene-analyzers-common
+              source: updates.yml
+              version-requirement: '>8.11.4'
+        source:
+            provider: github
+            repo: HUNGPNdev/Demo-Swagger-App
+            directory: /
+            commit: 0c89138a909c61e1bac721359a1bba8c210a3add
+            hostname: github.com
+            api-endpoint: https://api.github.com
+    credentials:
+        - host: github.com
+          password: $LOCAL_GITHUB_ACCESS_TOKEN
+          type: git_source
+          username: x-access-token
+output:
+    - type: update_dependency_list
+      expect:
+        data:
+            dependencies:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 3.4.4
+                      source: null
+                  version: 3.4.4
+                - name: org.springframework.boot:spring-boot-starter-web
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-devtools
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springframework.boot:spring-boot-starter-test
+                  requirements:
+                    - file: pom.xml
+                      groups:
+                        - test
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.springdoc:springdoc-openapi-starter-webmvc-ui
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 2.7.0
+                      source: null
+                  version: 2.7.0
+                - name: org.springframework.boot:spring-boot-starter
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: commons-validator:commons-validator
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 1.9.0
+                      source: null
+                  version: 1.9.0
+                - name: org.apache.kafka:kafka-clients
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 3.7.2
+                      source: null
+                  version: 3.7.2
+                - name: log4j:log4j
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 1.2.17
+                      source: null
+                  version: 1.2.17
+                - name: org.apache.maven.indexer:indexer-core
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 6.2.2
+                      source: null
+                  version: 6.2.2
+                - name: org.apache.maven.indexer:indexer-reader
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 6.2.2
+                      source: null
+                  version: 6.2.2
+                - name: org.apache.lucene:lucene-core
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 8.11.1
+                      source: null
+                  version: 8.11.1
+                - name: org.apache.lucene:lucene-analyzers-common
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 8.11.1
+                      source: null
+                  version: 8.11.1
+                - name: org.springframework.boot:spring-boot-maven-plugin
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+                - name: org.apache.maven.plugins:maven-compiler-plugin
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: null
+                      source: null
+                  version: null
+            dependency_files:
+                - /pom.xml
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: org.springframework.boot:spring-boot-starter-parent
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 3.4.4
+                      source: null
+                  previous-version: 3.4.4
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: pom
+                      requirement: 3.5.5
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 3.5.5
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.5.5</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.7.0</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.9.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>3.7.2</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.springframework.boot:spring-boot-starter-parent from 3.4.4 to 3.5.5
+            pr-body: |
+                Bumps [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 3.4.4 to 3.5.5.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/spring-projects/spring-boot/releases">org.springframework.boot:spring-boot-starter-parent's releases</a>.</em></p>
+                <blockquote>
+                <h2>v3.5.5</h2>
+                <h2>:lady_beetle: Bug Fixes</h2>
+                <ul>
+                <li>Hazelcast health indicator reports the wrong status when Hazelcast has shut down due to an out-of-memory error <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46909">#46909</a></li>
+                <li>Performance critical tracing code has high overhead due to the use of the Stream API <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46844">#46844</a></li>
+                <li>SpringLiquibaseCustomizer is exposed outside its defined visibility scope <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46758">#46758</a></li>
+                <li>Race condition in OutputCapture can result in stale data <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46721">#46721</a></li>
+                <li>Auto-configured WebClient no longer uses context's ReactorResourceFactory <a href="https://redirect.github.com/spring-projects/spring-boot/pull/46673">#46673</a></li>
+                <li>Default value not detected for a field annoted with <code>@Name</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46666">#46666</a></li>
+                <li>Missing metadata when using <code>@Name</code> with a constructor-bound property <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46663">#46663</a></li>
+                <li>Missing property for Spring Authorization Server's PAR endpoint <a href="https://redirect.github.com/spring-projects/spring-boot/pull/46641">#46641</a></li>
+                <li>Property name is incorrect when reporting a mis-configured OAuth 2 Resource Server JWT public key location <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46636">#46636</a></li>
+                <li>Memory not freed on context restart in JpaMetamodel#CACHE with spring.main.lazy-initialization=true <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46634">#46634</a></li>
+                <li>Auto-configured MockMvc ignores <code>@FilterRegistration</code> annotation <a href="https://redirect.github.com/spring-projects/spring-boot/pull/46605">#46605</a></li>
+                <li>Failure to discover default value for a primitive should not lead to document its default value <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46561">#46561</a></li>
+                </ul>
+                <h2>:notebook_with_decorative_cover: Documentation</h2>
+                <ul>
+                <li>Kotlin samples for configuration metadata are in the wrong package <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46857">#46857</a></li>
+                <li>Observability examples in the reference guide are missing the Kotlin version <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46798">#46798</a></li>
+                <li>Align method descriptions for SslOptions getCiphers and getEnabledProtocols with <code>@returns</code> <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46769">#46769</a></li>
+                <li>Tracing samples in the reference guide are missing the Kotlin version <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46767">#46767</a></li>
+                <li>Improve Virtual Threads section to mention the changes in Java 24 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46610">#46610</a></li>
+                <li>spring.test.webtestclient.timeout is not documented <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46588">#46588</a></li>
+                <li>spring-boot-test-autoconfigure should use the configuration properties annotation processor like other modules <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46585">#46585</a></li>
+                <li>Adapt deprecation level for management.health.influxdb.enabled <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46580">#46580</a></li>
+                <li>spring.test.mockmvc properties are not documented <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46578">#46578</a></li>
+                </ul>
+                <h2>:hammer: Dependency Upgrades</h2>
+                <ul>
+                <li>Upgrade to Angus Mail 2.0.4 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46725">#46725</a></li>
+                <li>Upgrade to AssertJ 3.27.4 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46726">#46726</a></li>
+                <li>Upgrade to Byte Buddy 1.17.7 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46883">#46883</a></li>
+                <li>Upgrade to Couchbase Client 3.8.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46794">#46794</a></li>
+                <li>Upgrade to Elasticsearch Client 8.18.5 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46830">#46830</a></li>
+                <li>Upgrade to Hibernate 6.6.26.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46884">#46884</a></li>
+                <li>Upgrade to Hibernate Validator 8.0.3.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46728">#46728</a></li>
+                <li>Upgrade to HikariCP 6.3.2 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46729">#46729</a></li>
+                <li>Upgrade to Jersey 3.1.11 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46730">#46730</a></li>
+                <li>Upgrade to Jetty 12.0.25 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46831">#46831</a></li>
+                <li>Upgrade to Jetty Reactive HTTPClient 4.0.11 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46885">#46885</a></li>
+                <li>Upgrade to jOOQ 3.19.25 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46808">#46808</a></li>
+                <li>Upgrade to MariaDB 3.5.5 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46779">#46779</a></li>
+                <li>Upgrade to Maven Javadoc Plugin 3.11.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46886">#46886</a></li>
+                <li>Upgrade to Micrometer 1.15.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46701">#46701</a></li>
+                <li>Upgrade to Micrometer Tracing 1.5.3 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46702">#46702</a></li>
+                <li>Upgrade to MySQL 9.4.0 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46732">#46732</a></li>
+                <li>Upgrade to Netty 4.1.124.Final <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46832">#46832</a></li>
+                <li>Upgrade to Pulsar 4.0.6 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46733">#46733</a></li>
+                <li>Upgrade to Reactor Bom 2024.0.9 <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46703">#46703</a></li>
+                </ul>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/3537d255b579018851951da08262cd0178e40c66"><code>3537d25</code></a> Release v3.5.5</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/a22e28e9e00eca994b8e412a420110da5b58b64a"><code>a22e28e</code></a> Merge branch '3.4.x' into 3.5.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/4cb8c8a1b9670497046655393ab2a0f535e8442d"><code>4cb8c8a</code></a> Next development version (v3.4.10-SNAPSHOT)</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/9d205e21c4c007b317cc3c65bf8dcad543e61c81"><code>9d205e2</code></a> Merge branch '3.4.x' into 3.5.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/47b06322d3df72d886d838a090f506a6ba281892"><code>47b0632</code></a> Merge pull request <a href="https://redirect.github.com/spring-projects/spring-boot/issues/46927">#46927</a> from izeye</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/8b7145802503dc00720e24db67144e568648c96f"><code>8b71458</code></a> Adapt checkstyle rules for 3.4.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/fb99badf16072b3e49aca422abe8e5be184b1af8"><code>fb99bad</code></a> Remove redundant suppressions from Checkstyle configuration</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/8af836a428e65b8032483d5d8159099684054cd0"><code>8af836a</code></a> Upgrade to Spring RESTDocs 3.0.5</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/ae6c6a5ed4652134c8f35fb8ca9a3d0149a207c2"><code>ae6c6a5</code></a> Merge branch '3.4.x' into 3.5.x</li>
+                <li><a href="https://github.com/spring-projects/spring-boot/commit/b6bae9f59b38a2dc8234d2766b062a5986410a37"><code>b6bae9f</code></a> Upgrade to Spring RESTDocs 3.0.5</li>
+                <li>Additional commits viewable in <a href="https://github.com/spring-projects/spring-boot/compare/v3.4.4...v3.5.5">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump org.springframework.boot:spring-boot-starter-parent
+
+                Bumps [org.springframework.boot:spring-boot-starter-parent](https://github.com/spring-projects/spring-boot) from 3.4.4 to 3.5.5.
+                - [Release notes](https://github.com/spring-projects/spring-boot/releases)
+                - [Commits](https://github.com/spring-projects/spring-boot/compare/v3.4.4...v3.5.5)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: org.springdoc:springdoc-openapi-starter-webmvc-ui
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 2.7.0
+                      source: null
+                  previous-version: 2.7.0
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 2.8.10
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 2.8.10
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.4.4</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.8.10</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.9.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>3.7.2</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.springdoc:springdoc-openapi-starter-webmvc-ui from 2.7.0 to 2.8.10
+            pr-body: |
+                Bumps [org.springdoc:springdoc-openapi-starter-webmvc-ui](https://github.com/springdoc/springdoc-openapi) from 2.7.0 to 2.8.10.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/springdoc/springdoc-openapi/releases">org.springdoc:springdoc-openapi-starter-webmvc-ui's releases</a>.</em></p>
+                <blockquote>
+                <h2>springdoc-openapi v2.8.10 released!</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Fix unexpected merging of media types by <a href="https://github.com/Mattias-Sehlstedt"><code>@​Mattias-Sehlstedt</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3026">springdoc/springdoc-openapi#3026</a></li>
+                <li>Fixed &quot;desciption&quot; typo by <a href="https://github.com/lc-nyovchev"><code>@​lc-nyovchev</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3036">springdoc/springdoc-openapi#3036</a></li>
+                <li>Fix: Property resolution for extensions within <code>@OpenAPIDefinition</code> Info object by <a href="https://github.com/limehee"><code>@​limehee</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3039">springdoc/springdoc-openapi#3039</a></li>
+                <li>Support externalDocs configure on SpecPropertiesCustomizer by <a href="https://github.com/huisam"><code>@​huisam</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3042">springdoc/springdoc-openapi#3042</a></li>
+                <li>Use adaptFromForwardedHeaders instead of deprecated fromHttpRequest by <a href="https://github.com/thijsnissen"><code>@​thijsnissen</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3060">springdoc/springdoc-openapi#3060</a></li>
+                <li>Fixes so that a RequestPart with a Map is added to the RequestBody by <a href="https://github.com/Mattias-Sehlstedt"><code>@​Mattias-Sehlstedt</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3051">springdoc/springdoc-openapi#3051</a></li>
+                <li>Refactor webhook discovery and scanning mechanism by <a href="https://github.com/zdary"><code>@​zdary</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3057">springdoc/springdoc-openapi#3057</a></li>
+                </ul>
+                <h3>Added</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3046">#3046</a> - Feature Request: Support <a href="https://github.com/jakarta"><code>@​jakarta</code></a>.annotation.Nonnull.</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3042">#3042</a> - Support externalDocs configure on SpecPropertiesCustomizer</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3057">#3057</a> - Refactor webhook discovery and scanning mechanism</li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>Upgrade spring-boot to v3.5.4</li>
+                <li>Upgrade swagger-ui to v5.27.1</li>
+                <li>Upgrade swagger-core to 2.2.36</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3050">#3050</a> - <a href="https://github.com/RequestPart"><code>@​RequestPart</code></a> JSON parameters missing Content-Type in generated curl commands, causing 415 errors.</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2978">#2978</a> - Parameter is no longer optional after upgrade to 2.8.8</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3022">#3022</a> - NullPointerException thrown in SchemaUtils.</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3026">#3026</a> - Fix unexpected merging of media types</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3036">#3036</a> - Fixed &quot;desciption&quot;</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3039">#3039</a> - Fix: Property resolution for extensions within <a href="https://github.com/OpenAPIDefinition"><code>@​OpenAPIDefinition</code></a> Info object</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3051">#3051</a> -  Fixes so that a RequestPart with a Map is added to the RequestBody</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3060">#3060</a> - Use adaptFromForwardedHeaders instead of deprecated fromHttpRequest</li>
+                </ul>
+                <h2>New Contributors</h2>
+                <ul>
+                <li><a href="https://github.com/Mattias-Sehlstedt"><code>@​Mattias-Sehlstedt</code></a> made their first contribution in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3026">springdoc/springdoc-openapi#3026</a></li>
+                <li><a href="https://github.com/lc-nyovchev"><code>@​lc-nyovchev</code></a> made their first contribution in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3036">springdoc/springdoc-openapi#3036</a></li>
+                <li><a href="https://github.com/huisam"><code>@​huisam</code></a> made their first contribution in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3042">springdoc/springdoc-openapi#3042</a></li>
+                <li><a href="https://github.com/thijsnissen"><code>@​thijsnissen</code></a> made their first contribution in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3060">springdoc/springdoc-openapi#3060</a></li>
+                <li><a href="https://github.com/zdary"><code>@​zdary</code></a> made their first contribution in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3057">springdoc/springdoc-openapi#3057</a></li>
+                </ul>
+                <p><strong>Full Changelog</strong>: <a href="https://github.com/springdoc/springdoc-openapi/compare/v2.8.9...v2.8.10">https://github.com/springdoc/springdoc-openapi/compare/v2.8.9...v2.8.10</a></p>
+                <h2>springdoc-openapi v2.8.9 released!</h2>
+                <h2>What's Changed</h2>
+                <ul>
+                <li>Support for <a href="https://github.com/Positive"><code>@​Positive</code></a> by <a href="https://github.com/mpleine"><code>@​mpleine</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3001">springdoc/springdoc-openapi#3001</a></li>
+                <li>Fixes for Spring Boot 3.5.0 API by <a href="https://github.com/mschout"><code>@​mschout</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3007">springdoc/springdoc-openapi#3007</a></li>
+                <li>feat: type-use for method parameters by <a href="https://github.com/mymx2"><code>@​mymx2</code></a> in <a href="https://redirect.github.com/springdoc/springdoc-openapi/pull/3011">springdoc/springdoc-openapi#3011</a></li>
+                </ul>
+                <h3>Added</h3>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Changelog</summary>
+                <p><em>Sourced from <a href="https://github.com/springdoc/springdoc-openapi/blob/main/CHANGELOG.md">org.springdoc:springdoc-openapi-starter-webmvc-ui's changelog</a>.</em></p>
+                <blockquote>
+                <h2>[2.8.10] - 2025-08-20</h2>
+                <h3>Added</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3046">#3046</a> - Feature Request: Support <a href="https://github.com/jakarta"><code>@​jakarta</code></a>.annotation.Nonnull.</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3042">#3042</a> - Support externalDocs configure on SpecPropertiesCustomizer</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3057">#3057</a> - Refactor webhook discovery and scanning mechanism</li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>Upgrade spring-boot to v3.5.4</li>
+                <li>Upgrade swagger-ui to v5.27.1</li>
+                <li>Upgrade swagger-core to 2.2.36</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3050">#3050</a> - <a href="https://github.com/RequestPart"><code>@​RequestPart</code></a> JSON parameters missing Content-Type in generated curl commands, causing 415 errors.</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2978">#2978</a> - Parameter is no longer optional after upgrade to 2.8.8</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3022">#3022</a> - NullPointerException thrown in SchemaUtils.</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3026">#3026</a> - Fix unexpected merging of media types</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3036">#3036</a> - Fixed &quot;desciption&quot;</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3039">#3039</a> - Fix: Property resolution for extensions within <a href="https://github.com/OpenAPIDefinition"><code>@​OpenAPIDefinition</code></a> Info object</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3051">#3051</a> -  Fixes so that a RequestPart with a Map is added to the RequestBody</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3060">#3060</a> - Use adaptFromForwardedHeaders instead of deprecated fromHttpRequest</li>
+                </ul>
+                <h2>[2.8.9] - 2025-06-10</h2>
+                <h3>Added</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2944">#2944</a> - Support for <a href="https://github.com/Positive"><code>@​Positive</code></a></li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3011">#3011</a> - type-use for method parameters</li>
+                </ul>
+                <h3>Changed</h3>
+                <ul>
+                <li>Upgrade spring-boot to version 3.5.0</li>
+                </ul>
+                <h3>Fixed</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2982">#2982</a> - application/problem+json content type is not set for ProblemDetails</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2990">#2990</a> - Issues with POST Request, application/x-www-form-urlencoded and only one parameter</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2998">#2998</a> - io.swagger.v3.oas.annotations.Webhook does not work when defined on the method level</li>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3012">#3012</a> - Order of examples is (sometimes) not preserved</li>
+                </ul>
+                <h2>[2.8.8] - 2025-05-04</h2>
+                <h3>Fixed</h3>
+                <ul>
+                <li><a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2977">#2977</a> - Handle projects not using kotlin-reflect <a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2977">#2977</a></li>
+                </ul>
+                <h2>[2.8.7] - 2025-05-04</h2>
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/2a59f95ff06b90023424e1021f6c8f09c87b21f5"><code>2a59f95</code></a> [maven-release-plugin] prepare release v2.8.10</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/759259b171dd655c3f769dd195b29bc2f93e064d"><code>759259b</code></a> CHANGELOG.md update for v2.8.10</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/b78504d162deee9202a12ad5cc1f54821a83ab07"><code>b78504d</code></a> <a href="https://github.com/RequestPart"><code>@​RequestPart</code></a> JSON parameters missing Content-Type in generated curl commands,...</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/06e62cb01f2b64ea9d600e44eefee5595440b1e7"><code>06e62cb</code></a> Feature Request: Support <a href="https://github.com/jakarta"><code>@​jakarta</code></a>.annotation.Nonnull. Fixes <a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/3046">#3046</a></li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/1a230163d2b3f1c02a7bd83dfc2dc9a421404408"><code>1a23016</code></a> Parameter is no longer optional after upgrade to 2.8.8. Fixes <a href="https://redirect.github.com/springdoc/springdoc-openapi/issues/2978">#2978</a>.</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/347227a1a52d1259caa2f7718d9c6dc32d41f85c"><code>347227a</code></a> Merge branch 'zdary-issue-3056'</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/da34e96d9b050dd5cecd379281e1f8feb4ec0e8a"><code>da34e96</code></a> Merge branch 'issue-3056' of <a href="https://github.com/zdary/springdoc-openapi">https://github.com/zdary/springdoc-openapi</a> into ...</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/38df7e9958482907cbf712c5f0cb09ce93e40530"><code>38df7e9</code></a> Merge branch 'Mattias-Sehlstedt-complex-request-part'</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/cc22112a81f1da06eb9439dd3483073b1e3bf68f"><code>cc22112</code></a> Merge branch 'complex-request-part' of <a href="https://github.com/Mattias-Sehlstedt/s">https://github.com/Mattias-Sehlstedt/s</a>...</li>
+                <li><a href="https://github.com/springdoc/springdoc-openapi/commit/d9e34c55845701455861bffcb32060f9a68c62aa"><code>d9e34c5</code></a> Merge branch 'thijsnissen-use-adapt-from-forwarded-headers'</li>
+                <li>Additional commits viewable in <a href="https://github.com/springdoc/springdoc-openapi/compare/v2.7.0...v2.8.10">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump org.springdoc:springdoc-openapi-starter-webmvc-ui
+
+                Bumps [org.springdoc:springdoc-openapi-starter-webmvc-ui](https://github.com/springdoc/springdoc-openapi) from 2.7.0 to 2.8.10.
+                - [Release notes](https://github.com/springdoc/springdoc-openapi/releases)
+                - [Changelog](https://github.com/springdoc/springdoc-openapi/blob/main/CHANGELOG.md)
+                - [Commits](https://github.com/springdoc/springdoc-openapi/compare/v2.7.0...v2.8.10)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: commons-validator:commons-validator
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 1.9.0
+                      source: null
+                  previous-version: 1.9.0
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 1.10.0
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 1.10.0
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.4.4</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.7.0</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.10.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>3.7.2</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump commons-validator:commons-validator from 1.9.0 to 1.10.0
+            pr-body: |
+                Bumps commons-validator:commons-validator from 1.9.0 to 1.10.0.
+            commit-message: |-
+                Bump commons-validator:commons-validator from 1.9.0 to 1.10.0
+
+                Bumps commons-validator:commons-validator from 1.9.0 to 1.10.0.
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: org.apache.kafka:kafka-clients
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 3.7.2
+                      source: null
+                  previous-version: 3.7.2
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 4.0.0
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 4.0.0
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.4.4</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.7.0</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.9.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>4.0.0</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.apache.kafka:kafka-clients from 3.7.2 to 4.0.0
+            pr-body: |
+                Bumps org.apache.kafka:kafka-clients from 3.7.2 to 4.0.0.
+            commit-message: |-
+                Bump org.apache.kafka:kafka-clients from 3.7.2 to 4.0.0
+
+                Bumps org.apache.kafka:kafka-clients from 3.7.2 to 4.0.0.
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: org.apache.maven.indexer:indexer-core
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 6.2.2
+                      source: null
+                  previous-version: 6.2.2
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 7.1.6
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 7.1.6
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.4.4</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.7.0</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.9.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>3.7.2</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>7.1.6</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.apache.maven.indexer:indexer-core from 6.2.2 to 7.1.6
+            pr-body: |
+                Bumps [org.apache.maven.indexer:indexer-core](https://github.com/apache/maven-indexer) from 6.2.2 to 7.1.6.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/apache/maven-indexer/releases">org.apache.maven.indexer:indexer-core's releases</a>.</em></p>
+                <blockquote>
+                <h2>7.1.6</h2>
+                <h1><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12317523&amp;version=12355102">Release Notes - Maven Indexer - Version 7.1.6</a></h1>
+                <!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/apache/maven-indexer/commit/ae466ff814f1e1631ab26392798fee2c45a67ce8"><code>ae466ff</code></a> [maven-release-plugin] prepare release maven-indexer-7.1.6</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/17ad4aa8a50ecdd56dcf64ee0567b4ef5a2ea74d"><code>17ad4aa</code></a> Fix release tag</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/203b07cae96b616fa3d2c699c762bb5408a3a6a2"><code>203b07c</code></a> [MINDEXER-256] Update site descriptors (<a href="https://redirect.github.com/apache/maven-indexer/issues/428">#428</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/7b89456531b70d528fdf7c5c423fe4fbc1c9bd1f"><code>7b89456</code></a> [MINDEXER-255] fix relevant codebase modernizer issues (<a href="https://redirect.github.com/apache/maven-indexer/issues/427">#427</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/aaf962303de22a86a4d47186aacc51e198d795f3"><code>aaf9623</code></a> [MINDEXER-254] Add CSC, add hacks circumventing CSC bug and make project more...</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/ff4b3eb78085ace2808aaaa6db56498c3d651678"><code>ff4b3eb</code></a> Enable Github issues</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/0ac6a0e9882191d372c85b6ab2b21678e51b59f7"><code>0ac6a0e</code></a> [MINDEXER-251] Parent 44 (<a href="https://redirect.github.com/apache/maven-indexer/issues/423">#423</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/906057bd641ce5f215193393a1f8d7fa2a3eed4c"><code>906057b</code></a> [MINDEXER-250] BasicUsageExample: ArtifactInfo may be null (<a href="https://redirect.github.com/apache/maven-indexer/issues/393">#393</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/142a3b9ceda6630be143bc3581e1ee22e9f06ea4"><code>142a3b9</code></a> [MINDEXER-249] Bump org.apache.felix:maven-bundle-plugin from 5.1.9 to 6.0.0 ...</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/7bda869cf2d8e239b52c726f4516c70638d49a11"><code>7bda869</code></a> [MINDEXER-248] Bump lucene.version from 9.11.1 to 9.12.1 (<a href="https://redirect.github.com/apache/maven-indexer/issues/422">#422</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/apache/maven-indexer/compare/maven-indexer-6.2.2...maven-indexer-7.1.6">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump org.apache.maven.indexer:indexer-core from 6.2.2 to 7.1.6
+
+                Bumps [org.apache.maven.indexer:indexer-core](https://github.com/apache/maven-indexer) from 6.2.2 to 7.1.6.
+                - [Release notes](https://github.com/apache/maven-indexer/releases)
+                - [Changelog](https://github.com/apache/maven-indexer/blob/master/RELEASE.md)
+                - [Commits](https://github.com/apache/maven-indexer/compare/maven-indexer-6.2.2...maven-indexer-7.1.6)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: org.apache.maven.indexer:indexer-reader
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 6.2.2
+                      source: null
+                  previous-version: 6.2.2
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 7.1.6
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 7.1.6
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.4.4</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.7.0</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.9.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>3.7.2</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>7.1.6</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.apache.maven.indexer:indexer-reader from 6.2.2 to 7.1.6
+            pr-body: |
+                Bumps [org.apache.maven.indexer:indexer-reader](https://github.com/apache/maven-indexer) from 6.2.2 to 7.1.6.
+                <details>
+                <summary>Release notes</summary>
+                <p><em>Sourced from <a href="https://github.com/apache/maven-indexer/releases">org.apache.maven.indexer:indexer-reader's releases</a>.</em></p>
+                <blockquote>
+                <h2>7.1.6</h2>
+                <h1><a href="https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12317523&amp;version=12355102">Release Notes - Maven Indexer - Version 7.1.6</a></h1>
+                <!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
+                <!-- raw HTML omitted -->
+                </blockquote>
+                <p>... (truncated)</p>
+                </details>
+                <details>
+                <summary>Commits</summary>
+                <ul>
+                <li><a href="https://github.com/apache/maven-indexer/commit/ae466ff814f1e1631ab26392798fee2c45a67ce8"><code>ae466ff</code></a> [maven-release-plugin] prepare release maven-indexer-7.1.6</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/17ad4aa8a50ecdd56dcf64ee0567b4ef5a2ea74d"><code>17ad4aa</code></a> Fix release tag</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/203b07cae96b616fa3d2c699c762bb5408a3a6a2"><code>203b07c</code></a> [MINDEXER-256] Update site descriptors (<a href="https://redirect.github.com/apache/maven-indexer/issues/428">#428</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/7b89456531b70d528fdf7c5c423fe4fbc1c9bd1f"><code>7b89456</code></a> [MINDEXER-255] fix relevant codebase modernizer issues (<a href="https://redirect.github.com/apache/maven-indexer/issues/427">#427</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/aaf962303de22a86a4d47186aacc51e198d795f3"><code>aaf9623</code></a> [MINDEXER-254] Add CSC, add hacks circumventing CSC bug and make project more...</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/ff4b3eb78085ace2808aaaa6db56498c3d651678"><code>ff4b3eb</code></a> Enable Github issues</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/0ac6a0e9882191d372c85b6ab2b21678e51b59f7"><code>0ac6a0e</code></a> [MINDEXER-251] Parent 44 (<a href="https://redirect.github.com/apache/maven-indexer/issues/423">#423</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/906057bd641ce5f215193393a1f8d7fa2a3eed4c"><code>906057b</code></a> [MINDEXER-250] BasicUsageExample: ArtifactInfo may be null (<a href="https://redirect.github.com/apache/maven-indexer/issues/393">#393</a>)</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/142a3b9ceda6630be143bc3581e1ee22e9f06ea4"><code>142a3b9</code></a> [MINDEXER-249] Bump org.apache.felix:maven-bundle-plugin from 5.1.9 to 6.0.0 ...</li>
+                <li><a href="https://github.com/apache/maven-indexer/commit/7bda869cf2d8e239b52c726f4516c70638d49a11"><code>7bda869</code></a> [MINDEXER-248] Bump lucene.version from 9.11.1 to 9.12.1 (<a href="https://redirect.github.com/apache/maven-indexer/issues/422">#422</a>)</li>
+                <li>Additional commits viewable in <a href="https://github.com/apache/maven-indexer/compare/maven-indexer-6.2.2...maven-indexer-7.1.6">compare view</a></li>
+                </ul>
+                </details>
+                <br />
+            commit-message: |-
+                Bump org.apache.maven.indexer:indexer-reader from 6.2.2 to 7.1.6
+
+                Bumps [org.apache.maven.indexer:indexer-reader](https://github.com/apache/maven-indexer) from 6.2.2 to 7.1.6.
+                - [Release notes](https://github.com/apache/maven-indexer/releases)
+                - [Changelog](https://github.com/apache/maven-indexer/blob/master/RELEASE.md)
+                - [Commits](https://github.com/apache/maven-indexer/compare/maven-indexer-6.2.2...maven-indexer-7.1.6)
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: org.apache.lucene:lucene-core
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 8.11.1
+                      source: null
+                  previous-version: 8.11.1
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 10.2.2
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 10.2.2
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.4.4</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.7.0</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.9.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>3.7.2</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>10.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.apache.lucene:lucene-core from 8.11.1 to 10.2.2
+            pr-body: |
+                Bumps org.apache.lucene:lucene-core from 8.11.1 to 10.2.2.
+            commit-message: |-
+                Bump org.apache.lucene:lucene-core from 8.11.1 to 10.2.2
+
+                Bumps org.apache.lucene:lucene-core from 8.11.1 to 10.2.2.
+    - type: create_pull_request
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
+            dependencies:
+                - name: org.apache.lucene:lucene-analyzers-common
+                  previous-requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 8.11.1
+                      source: null
+                  previous-version: 8.11.1
+                  requirements:
+                    - file: pom.xml
+                      groups: []
+                      metadata:
+                        packaging_type: jar
+                      requirement: 8.11.4
+                      source:
+                        type: maven_repo
+                        url: https://repo.maven.apache.org/maven2
+                  version: 8.11.4
+                  directory: /
+            updated-dependency-files:
+                - content: |
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+                    	<modelVersion>4.0.0</modelVersion>
+                    	<parent>
+                    		<groupId>org.springframework.boot</groupId>
+                    		<artifactId>spring-boot-starter-parent</artifactId>
+                    		<version>3.4.4</version>
+                    		<relativePath/> <!-- lookup parent from repository -->
+                    	</parent>
+                    	<packaging>ear</packaging>
+                    	<groupId>com.roger.licensight</groupId>
+                    	<artifactId>demo-swagger-app</artifactId>
+                    	<version>0.0.1-SNAPSHOT</version>
+                    	<name>demo-swagger-app</name>
+                    	<description>Demo project for Spring Boot</description>
+                    	<url/>
+                    	<licenses>
+                    		<license/>
+                    	</licenses>
+                    	<developers>
+                    		<developer/>
+                    	</developers>
+                    	<scm>
+                    		<connection/>
+                    		<developerConnection/>
+                    		<tag/>
+                    		<url/>
+                    	</scm>
+                    	<properties>
+                    		<java.version>17</java.version>
+                    	</properties>
+                    	<dependencies>
+                    		<!-- Spring Boot Starter Web -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-web</artifactId>
+                    		</dependency>
+
+                    		<!-- Spring Boot DevTools -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-devtools</artifactId>
+                    			<scope>runtime</scope>
+                    			<optional>true</optional>
+                    		</dependency>
+
+                    		<!-- Spring Boot Starter Test -->
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter-test</artifactId>
+                    			<scope>test</scope>
+                    		</dependency>
+
+                    		<!-- Swagger OpenAPI -->
+                    		<dependency>
+                    			<groupId>org.springdoc</groupId>
+                    			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                    			<version>2.7.0</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.springframework.boot</groupId>
+                    			<artifactId>spring-boot-starter</artifactId>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>commons-validator</groupId>
+                    			<artifactId>commons-validator</artifactId>
+                    			<version>1.9.0</version>
+                    		</dependency>
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.projectlombok</groupId>-->
+                    <!--			<artifactId>lombok</artifactId>-->
+                    <!--			<version>1.16.20</version>-->
+                    <!--			<scope>provided</scope>-->
+                    <!--		</dependency>-->
+
+                    <!--		<dependency>-->
+                    <!--			<groupId>org.mapstruct</groupId>-->
+                    <!--			<artifactId>mapstruct</artifactId>-->
+                    <!--			<version>1.4.0.Final</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.kafka</groupId>
+                    			<artifactId>kafka-clients</artifactId>
+                    			<version>3.7.2</version>
+                    		</dependency>
+
+
+                    		<dependency>
+                    			<groupId>log4j</groupId>
+                    			<artifactId>log4j</artifactId>
+                    			<version>1.2.17</version>
+                    		</dependency>
+                    <!--		<dependency>-->
+                    <!--			<groupId>javax.annotation</groupId>-->
+                    <!--			<artifactId>javax.annotation-api</artifactId>-->
+                    <!--			<version>1.2</version>-->
+                    <!--		</dependency>-->
+
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-core</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.maven.indexer</groupId>
+                    			<artifactId>indexer-reader</artifactId>
+                    			<version>6.2.2</version>
+                    		</dependency>
+
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-core</artifactId>
+                    			<version>8.11.1</version>
+                    		</dependency>
+                    		<dependency>
+                    			<groupId>org.apache.lucene</groupId>
+                    			<artifactId>lucene-analyzers-common</artifactId>
+                    			<version>8.11.4</version>
+                    		</dependency>
+
+                    	</dependencies>
+
+                    	<build>
+                    		<plugins>
+                    			<plugin>
+                    				<groupId>org.springframework.boot</groupId>
+                    				<artifactId>spring-boot-maven-plugin</artifactId>
+                    				<configuration>
+                    					<finalName>demo-swagger-app</finalName>
+                    					<excludeDevtools>true</excludeDevtools>
+                    				</configuration>
+                    			</plugin>
+                    			<plugin>
+                    				<groupId>org.apache.maven.plugins</groupId>
+                    				<artifactId>maven-compiler-plugin</artifactId>
+                    				<configuration>
+                    					<source>7</source>
+                    					<target>7</target>
+                    				</configuration>
+                    			</plugin>
+                    		</plugins>
+                    	</build>
+
+                    </project>
+                  content_encoding: utf-8
+                  deleted: false
+                  directory: /
+                  name: pom.xml
+                  operation: update
+                  support_file: false
+                  type: file
+            pr-title: Bump org.apache.lucene:lucene-analyzers-common from 8.11.1 to 8.11.4
+            pr-body: |
+                Bumps org.apache.lucene:lucene-analyzers-common from 8.11.1 to 8.11.4.
+            commit-message: |-
+                Bump org.apache.lucene:lucene-analyzers-common from 8.11.1 to 8.11.4
+
+                Bumps org.apache.lucene:lucene-analyzers-common from 8.11.1 to 8.11.4.
+    - type: mark_as_processed
+      expect:
+        data:
+            base-commit-sha: 0c89138a909c61e1bac721359a1bba8c210a3add
